@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { RouterGuard } from './core/guards/router.guard';
+// import { AppComponent } from './app.component';
 
 export const APP_ROUTES: Routes = [
     {
@@ -8,5 +9,11 @@ export const APP_ROUTES: Routes = [
         data: { 'x-funcionalidad': 'base' },
         canActivate: [RouterGuard],
         canActivateChild: [RouterGuard],
-    }
+    },
+    // {
+    //     path: '',
+    //     component: AppComponent,
+    //     pathMatch: 'full',
+    // },
+    { path: '**', redirectTo: 'inicio', pathMatch: 'full' },
 ]

@@ -35,5 +35,5 @@ export const APP_ERRORS = [
     code: USER_ALREADY_EXIST,
     title: 'USER_ALREADY_EXIST',
     message: 'Usuario ya existe',
-  },
+  },
 ];

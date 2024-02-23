@@ -26,8 +26,4 @@ export class HomeComponent implements OnInit {
     this.modalService.open(modal);
   }
 
-  private nada() {
-    
-  }
-  
 }
