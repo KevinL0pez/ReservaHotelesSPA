@@ -4,19 +4,19 @@ import { HomeComponent } from './home.component';
 import { HOME_ROUTES } from './home.routes';
 import { RouterModule } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from '@sharedModule/shared.module';
 
 @NgModule({
   declarations: [
     HomeComponent
   ],
   imports: [
-    CommonModule,
-    MatButtonModule, 
-    MatDividerModule, 
+    CommonModule, 
     MatIconModule,
-    RouterModule.forChild(HOME_ROUTES)
+    RouterModule.forChild(HOME_ROUTES),
+    SharedModule,
+    NgbModule
   ]
 })
 export class HomeModule { }

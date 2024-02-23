@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -8,7 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class HomeComponent {
 
-  constructor(private spinner: NgxSpinnerService) {}
+  constructor(private spinner: NgxSpinnerService, private modalService: NgbModal) {}
 
   ngOnInit() {
     /** spinner starts on init */
@@ -17,7 +18,15 @@ export class HomeComponent {
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
-    }, 5000);
+    }, 1000);
+  }
+
+  public open(modal: any): void {
+    this.modalService.open(modal);
+  }
+
+  private nada() {
+    
   }
   
 }
