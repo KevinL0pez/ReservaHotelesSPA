@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '@sharedModule/shared.module';
 // import { DirectivesModule } from '@common/directives/directives.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderModule } from '../header/header.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     NgbModule,
     // DirectivesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HeaderModule
   ]
 })
 export class HomeModule { }
