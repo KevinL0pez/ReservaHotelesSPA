@@ -1,24 +1,141 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { ISafeAny } from '@sharedModule/models/ISafeAny';
+import Swal from 'sweetalert2';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class UtilitiesService {
-    
-    constructor() { }
+  constructor(private router: Router) {}
 
-    showErrorMessage() {
-        return;
-    }
+  async showErrorMessage(
+    messageError = '',
+    router = '',
+    textoBotonConfirmar = '',
+    textoBotonCancelar = ''
+  ): Promise<boolean> {
+    let aceptarCancelar = false;
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'mat-focus-indicator mat-tooltip-trigger mat-raised-button mat-button-base mat-warn',
+        cancelButton: 'mat-focus-indicator mat-tooltip-trigger mat-raised-button mat-button-base',
+      },
+      buttonsStyling: true,
+    });
+    const swalConfig: ISafeAny = {
+      html: messageError,
+      icon: 'error',
+      showCancelButton: textoBotonCancelar && true,
+      confirmButtonText: textoBotonConfirmar ? textoBotonConfirmar : 'Cerrar',
+      cancelButtonText: textoBotonCancelar,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+    };
+    await swalWithBootstrapButtons.fire(swalConfig).then((result: ISafeAny) => {
+      if (result.isConfirmed && router !== '') {
+        this.router.navigate([router]);
+      }
+      aceptarCancelar = result.isConfirmed;
+    });
+    return aceptarCancelar;
+  }
 
-    showSucessMessage() {
-        return;
-    }
-    
-    showInfoMessage() {
-        return;
-    }
+  async showSucessMessage(
+    messageSuccess = '',
+    router = '',
+    textoBotonConfirmar = '',
+    textoBotonCancelar = ''
+  ): Promise<boolean> {
+    let aceptarCancelar = false;
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base',
+        cancelButton: 'mdc-button mdc-button--raised mat-mdc-raised-button mat-warn mat-mdc-button-base',
+      },
+      buttonsStyling: true,
+    });
+    const swalConfig: ISafeAny = {
+      html: messageSuccess,
+      icon: 'success',
+      showCancelButton: textoBotonCancelar && true,
+      confirmButtonText: textoBotonConfirmar ? textoBotonConfirmar : 'Cerrar',
+      cancelButtonText: textoBotonCancelar,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+    };
+    await swalWithBootstrapButtons.fire(swalConfig).then((result: ISafeAny) => {
+      if (result.isConfirmed && router !== '') {
+        this.router.navigate([router]);
+      }
+      aceptarCancelar = result.isConfirmed;
+    });
+    return aceptarCancelar;
+  }
 
-    showWarningMessage() {
-        return;
-    }
+  async showInfoMessage(
+    messageInfo = '',
+    router = '',
+    textoBotonConfirmar = '',
+    textoBotonCancelar = ''
+  ): Promise<boolean> {
+    let aceptarCancelar = false;
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base',
+        cancelButton: 'mdc-button mdc-button--raised mat-mdc-raised-button mat-warn mat-mdc-button-base',
+      },
+      buttonsStyling: true,
+    });
+    const swalConfig: ISafeAny = {
+      html: messageInfo,
+      icon: 'info',
+      showCancelButton: textoBotonCancelar && true,
+      confirmButtonText: textoBotonConfirmar ? textoBotonConfirmar : 'Cerrar',
+      cancelButtonText: textoBotonCancelar,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+    };
+    await swalWithBootstrapButtons.fire(swalConfig).then((result: ISafeAny) => {
+      if (result.isConfirmed && router !== '') {
+        this.router.navigate([router]);
+      }
+      aceptarCancelar = result.isConfirmed;
+    });
+    return aceptarCancelar;
+  }
 
+  async showWarningMessage(
+    messageInfo = '',
+    router = '',
+    textoBotonConfirmar = '',
+    textoBotonCancelar = ''
+  ): Promise<boolean> {
+    let aceptarCancelar = false;
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base',
+        cancelButton: 'mdc-button mdc-button--raised mat-mdc-raised-button mat-warn mat-mdc-button-base',
+      },
+      buttonsStyling: true,
+    });
+    const swalConfig: ISafeAny = {
+      html: messageInfo,
+      icon: 'warning',
+      showCancelButton: textoBotonCancelar && true,
+      confirmButtonText: textoBotonConfirmar ? textoBotonConfirmar : 'Cerrar',
+      cancelButtonText: textoBotonCancelar,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+    };
+    await swalWithBootstrapButtons.fire(swalConfig).then((result: ISafeAny) => {
+      if (result.isConfirmed && router !== '') {
+        this.router.navigate([router]);
+      }
+      aceptarCancelar = result.isConfirmed;
+    });
+    return aceptarCancelar;
+  }
 }
