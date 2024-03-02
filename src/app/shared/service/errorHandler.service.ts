@@ -33,6 +33,7 @@ export class ErrorHandlerService {
     hasCapitalCase: 'Este campo debe contener mayúsculas',
     hasSmallCase: 'Este campo debe contener minúsculas',
     hasSpecialCharacters: 'Este campo debe contener carácteres especiales',
+    notSame: 'Las contraseñas no coinciden'
   };
 
   constructor() {}
@@ -42,7 +43,6 @@ export class ErrorHandlerService {
 
     if (control && control.invalid && control.touched) {
       const errors: string[] = [];
-
       for (const errorKey in control.errors) {
         if (Object.prototype.hasOwnProperty.call(control.errors, errorKey)) {
           const errorMessageTemplate = this.ERROR_MESSAGES[errorKey as keyof typeof this.ERROR_MESSAGES];
@@ -54,7 +54,6 @@ export class ErrorHandlerService {
           }
         }
       }
-
       return errors;
     }
 
@@ -68,6 +67,10 @@ export class ErrorHandlerService {
         // Si es un objeto, intenta extraer la propiedad requiredLength
         if (typeof errorData[key] === 'object' && 'requiredLength' in errorData[key]) {
           return errorData[key]['requiredLength'];
+        } else if (typeof errorData[key] === 'object' && 'min' in errorData[key]) {
+          return errorData[key]['min'];
+        } else if (typeof errorData[key] === 'object' && 'max' in errorData[key]) {
+          return errorData[key]['max'];
         }
         return errorData[key];
       } else {

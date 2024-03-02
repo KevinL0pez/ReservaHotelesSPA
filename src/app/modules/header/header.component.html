@@ -3,9 +3,10 @@
     <h1>RESERVA HOTELES</h1>
   </div>
   <div class="headerbuttons">
-    <button>INICIO</button>
-    <button>CATÁLOGO</button>
-    <button>QUIÉNES SOMOS</button>
-    <button>CONTACTENOS</button>
+    <button (click)="redireccionar('inicio')" routerLinkActive="router-link-active" >Inicio</button>
+    <button>Administrar</button>
+    <button>Mis reservas</button>
+    <button>Hoteles</button>
+    <button (click)="redireccionar('inicio-sesion')" >Iniciar sesión</button>
   </div>
 </header>

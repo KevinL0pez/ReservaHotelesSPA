@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DefaultInterceptor } from '@core/interceptors/default.interceptor';
 import { HttpRequestMockInterceptorService } from '@core/interceptors/http-request-mock-interceptor.service';
 import { environment } from '@env/environment';
+import { HeaderModule } from './modules/header/header.module';
 
 
 const INTERCEPTOR_PROVIDES = [{ provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true }];
@@ -36,6 +37,7 @@ const PROVIDES_DESARROLLO: Provider[] = [
     RouterModule.forRoot(APP_ROUTES),
     NgbModule,
     LayoutModule,
+    HeaderModule
     // LayoutConfigDynamicModule.forRoot('assets/configuration.json')
   ],
   providers: [

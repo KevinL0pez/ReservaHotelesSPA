@@ -6,6 +6,9 @@ import { ErrorHandlerService } from '@sharedModule/service/errorHandler.service'
 import { UtilitiesService } from '@sharedModule/service/utilitiesSevice.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
+export const StrongPasswordRegx: RegExp =
+  /^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,13 +26,17 @@ export class HomeComponent implements OnInit {
     public readonly errorHandlerService: ErrorHandlerService
   ) { 
     this.formExample = this.formBuilder.group({
-      myControlName: new FormControl('', [
+      correo: new FormControl<string>('', [
         Validators.required, 
         Validators.minLength(3), 
         Validators.maxLength(15),
         Validators.email
       ]
-      )
+      ),
+      contrasenia: new FormControl('', [
+        Validators.required,
+        Validators.pattern(StrongPasswordRegx)
+      ])
     })
   }
 

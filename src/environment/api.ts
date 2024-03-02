@@ -1,3 +1,4 @@
 export const api = {
-    getExample: 'example'
+    getExample: 'example',
+    getUsers: 'api/users/all'
 }

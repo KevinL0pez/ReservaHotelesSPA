@@ -118,11 +118,15 @@
       },
       {
         "file": "angular.json",
-        "hash": "10204004159963012192"
+        "hash": "1831407376115269888"
       },
       {
         "file": "package.json",
-        "hash": "4068855199244573516"
+        "hash": "5181392029701327869"
+      },
+      {
+        "file": "proxy.config.json",
+        "hash": "12619968280703611861"
       },
       {
         "file": "src/app/app-routing.module.ts",
@@ -130,7 +134,7 @@
       },
       {
         "file": "src/app/app.component.html",
-        "hash": "292532891040409607"
+        "hash": "3665987816686190673"
       },
       {
         "file": "src/app/app.component.scss",
@@ -146,15 +150,15 @@
       },
       {
         "file": "src/app/app.module.ts",
-        "hash": "3328237508791137130"
+        "hash": "698365499467044406"
       },
       {
         "file": "src/app/app.routing.ts",
-        "hash": "15989388587813736585"
+        "hash": "12181959511042973288"
       },
       {
         "file": "src/app/common/directives/directives.module.ts",
-        "hash": "10018768878478348687"
+        "hash": "7498408177047753625"
       },
       {
         "file": "src/app/common/directives/form-error-handler/form-error-handler.directive.spec.ts",
@@ -162,7 +166,7 @@
       },
       {
         "file": "src/app/common/directives/form-error-handler/form-error-handler.directive.ts",
-        "hash": "12153824304080967982"
+        "hash": "6590329010935181125"
       },
       {
         "file": "src/app/common/helpers/errors/errors.spec.ts",
@@ -170,7 +174,7 @@
       },
       {
         "file": "src/app/common/helpers/errors/errors.ts",
-        "hash": "10144979062453222850"
+        "hash": "3488944404536089291"
       },
       {
         "file": "src/app/common/helpers/validators/custom.validator.ts",
@@ -213,12 +217,32 @@
         "hash": "12777798610458342271"
       },
       {
+        "file": "src/app/modules/header/header.component.html",
+        "hash": "11450308186601785200"
+      },
+      {
+        "file": "src/app/modules/header/header.component.scss",
+        "hash": "7294664170354574897"
+      },
+      {
+        "file": "src/app/modules/header/header.component.spec.ts",
+        "hash": "6260778631171542638"
+      },
+      {
+        "file": "src/app/modules/header/header.component.ts",
+        "hash": "17162240568216970008"
+      },
+      {
+        "file": "src/app/modules/header/header.module.ts",
+        "hash": "7706658214118120454"
+      },
+      {
         "file": "src/app/modules/home/home.component.html",
-        "hash": "7968954391786929104"
+        "hash": "10632080972640299390"
       },
       {
         "file": "src/app/modules/home/home.component.scss",
-        "hash": "4957215603581488203"
+        "hash": "3244421341483603138"
       },
       {
         "file": "src/app/modules/home/home.component.spec.ts",
@@ -226,15 +250,59 @@
       },
       {
         "file": "src/app/modules/home/home.component.ts",
-        "hash": "15996701680388044624"
+        "hash": "3794711946119832713"
       },
       {
         "file": "src/app/modules/home/home.module.ts",
-        "hash": "6488408269984107868"
+        "hash": "7755035628951767683"
       },
       {
         "file": "src/app/modules/home/home.routes.ts",
         "hash": "9719529209388113063"
+      },
+      {
+        "file": "src/app/modules/login/login.component.html",
+        "hash": "15053807887887763033"
+      },
+      {
+        "file": "src/app/modules/login/login.component.scss",
+        "hash": "11664485070088877437"
+      },
+      {
+        "file": "src/app/modules/login/login.component.spec.ts",
+        "hash": "9305911407776641723"
+      },
+      {
+        "file": "src/app/modules/login/login.component.ts",
+        "hash": "9994444787249295041"
+      },
+      {
+        "file": "src/app/modules/login/login.module.ts",
+        "hash": "9331311256086327880"
+      },
+      {
+        "file": "src/app/modules/login/login.routes.ts",
+        "hash": "1670077303585425805"
+      },
+      {
+        "file": "src/app/modules/register/register.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/modules/register/register.component.html",
+        "hash": "2489894839149508814"
+      },
+      {
+        "file": "src/app/modules/register/register.component.spec.ts",
+        "hash": "13484588147775314290"
+      },
+      {
+        "file": "src/app/modules/register/register.component.ts",
+        "hash": "7412164209478860042"
+      },
+      {
+        "file": "src/app/modules/register/register.module.ts",
+        "hash": "4627540437313218703"
       },
       {
         "file": "src/app/shared/models/ISafeAny.ts",
@@ -253,8 +321,16 @@
         "hash": "10927319944311220883"
       },
       {
+        "file": "src/app/shared/service/auth.service.ts",
+        "hash": "2572247671907811510"
+      },
+      {
         "file": "src/app/shared/service/base64.service.ts",
         "hash": "13330151713925143669"
+      },
+      {
+        "file": "src/app/shared/service/errorHandler.service.ts",
+        "hash": "3287217373522181583"
       },
       {
         "file": "src/app/shared/service/subject.service.ts",
@@ -274,7 +350,7 @@
       },
       {
         "file": "src/environment/api.ts",
-        "hash": "16995403601245473509"
+        "hash": "14405485027334069335"
       },
       {
         "file": "src/environment/environment.prod.ts",
@@ -286,7 +362,7 @@
       },
       {
         "file": "src/favicon.ico",
-        "hash": "3988961587069885523"
+        "hash": "10452572916298820469"
       },
       {
         "file": "src/index.html",
@@ -297,12 +373,8 @@
         "hash": "9374417435436826166"
       },
       {
-        "file": "src/proxy.config.js",
-        "hash": "17796046287822063143"
-      },
-      {
         "file": "src/styles.scss",
-        "hash": "10371129678561990632"
+        "hash": "10457166348127476819"
       },
       {
         "file": "tsconfig.app.json",

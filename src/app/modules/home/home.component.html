@@ -1,15 +1,25 @@
-<app-header></app-header>
-
 <div class="pt-4 pb-4">
   <form [formGroup]="formExample" >
     <div class="col-12 col-md-6" >
       <mat-form-field fxFlex="100" fxFlex.lt-sm="100" appearance="outline">
-        <mat-label>Outline form field</mat-label>
+        <mat-label>Correo electrónico :</mat-label>
         <input 
           matInput 
           type="text"
-          formControlName="myControlName" >
-        <mat-error *ngFor="let errorMessage of errorHandlerService.getErrorMessages(formExample,'myControlName')">
+          formControlName="correo" >
+        <mat-error *ngFor="let errorMessage of errorHandlerService.getErrorMessages(formExample,'correo')">
+          {{ errorMessage }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 col-md-6" >
+      <mat-form-field fxFlex="100" fxFlex.lt-sm="100" appearance="outline">
+        <mat-label>Contraseña :</mat-label>
+        <input 
+          matInput 
+          type="text"
+          formControlName="contrasenia" >
+        <mat-error *ngFor="let errorMessage of errorHandlerService.getErrorMessages(formExample,'contrasenia')">
           {{ errorMessage }}
         </mat-error>
       </mat-form-field>
