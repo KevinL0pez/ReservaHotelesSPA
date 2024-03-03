@@ -47,7 +47,9 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
-    }, 1000);
+      this.utilitiesService.showInfoMessage('En construcción...', 'inicio-sesion', 'Aceptar')
+    }, 500);
+    
   }
 
   public open(modal: ISafeAny): void {

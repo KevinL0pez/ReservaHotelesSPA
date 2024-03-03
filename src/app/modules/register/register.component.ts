@@ -1,8 +1,13 @@
+import { UtilitiesService } from '@sharedModule/service/utilitiesSevice.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { alphanumeric, emailValidator, onlyLetters, onlyNumbers } from '@common/helpers/validators/formats.validator';
 import { ISafeAny } from '@sharedModule/models/ISafeAny';
 import { AuthService } from '@sharedModule/service/auth.service';
 import { ErrorHandlerService } from '@sharedModule/service/errorHandler.service';
+import { catchError, finalize, of, tap } from 'rxjs';
+import { IUserRegister } from '@sharedModule/models/IUserRegister';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +23,9 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public readonly errorHandlerService: ErrorHandlerService,
-    private auth: AuthService
+    private authService: AuthService,
+    private utilitiesService: UtilitiesService,
+    private spinner: NgxSpinnerService
   ) {  }
 
   ngOnInit(): void {
@@ -31,10 +38,11 @@ export class RegisterComponent implements OnInit {
         Validators.required, 
         Validators.minLength(5), 
         Validators.maxLength(120),
-        Validators.email
+        Validators.email,
+        emailValidator
       ]
       ),
-      password: new FormControl('', [
+      passwordUser: new FormControl('', [
         Validators.required,
         Validators.minLength(8)
       ]),
@@ -43,16 +51,17 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(8),
         this.matchPasswordValidator()
       ]),
-      phoneNumber: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]),
-      namesUser: new FormControl<string>('', [Validators.required]),
-      lastNamesUser: new FormControl<string>('', [Validators.required]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10), onlyNumbers]),
+      namesUser: new FormControl<string>('', [Validators.required, onlyLetters]),
+      lastNamesUser: new FormControl<string>('', [Validators.required, onlyLetters]),
+      numberDocumentUser: new FormControl<string>('', [Validators.required, Validators.maxLength(15),alphanumeric])
     });
   }
 
   // Función de validación personalizada para verificar si las contraseñas coinciden
   private matchPasswordValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: ISafeAny } | null => {
-      const password = this.formRegister?.get('password')?.value;
+      const password = this.formRegister?.get('passwordUser')?.value;
       const confirmPassword = control.value;
 
       return password === confirmPassword ? null : { notSame: true };
@@ -68,6 +77,32 @@ export class RegisterComponent implements OnInit {
       this.formRegister.markAllAsTouched();
       return;
     }
+    const { emailUser, numberDocumentUser, passwordUser, namesUser, lastNamesUser, phoneNumber } = this.formRegister.value;
+    const objetUser: IUserRegister = {
+      emailUser,
+      numberDocumentUser,
+      passwordUser,
+      namesUser,
+      lastNamesUser,
+      phoneNumber
+    }
+
+    this.spinner.show(); // Show Spinner
+    this.authService.registerNewUser(objetUser).pipe(
+      tap((data) => {
+        if (data.error) {
+          this.utilitiesService.showErrorMessage(data.message, '', 'Aceptar')
+        } else {
+          this.utilitiesService.showSucessMessage(data.message, 'inicio-sesion', 'Aceptar')
+        }
+      }),
+      catchError((err) => {
+        console.error("Error: ", err);
+        this.utilitiesService.showErrorMessage(err.message)
+        return of(null)
+      }),
+      finalize(() => this.spinner.hide() ) // Hiden Spinner
+    ).subscribe();
   }
 
 }

@@ -16,7 +16,7 @@ export class UtilitiesService {
     let aceptarCancelar = false;
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'mat-focus-indicator mat-tooltip-trigger mat-raised-button mat-button-base mat-warn',
+        confirmButton: 'cancel-button',
         cancelButton: 'mat-focus-indicator mat-tooltip-trigger mat-raised-button mat-button-base',
       },
       buttonsStyling: true,
@@ -49,8 +49,8 @@ export class UtilitiesService {
     let aceptarCancelar = false;
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base',
-        cancelButton: 'mdc-button mdc-button--raised mat-mdc-raised-button mat-warn mat-mdc-button-base',
+        confirmButton: 'button-primary',
+        cancelButton: 'cancel-button',
       },
       buttonsStyling: true,
     });

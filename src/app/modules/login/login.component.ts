@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { emailValidator } from '@common/helpers/validators/formats.validator';
+import { ILoginUser } from '@sharedModule/models/ILoginUser';
 import { AuthService } from '@sharedModule/service/auth.service';
 import { ErrorHandlerService } from '@sharedModule/service/errorHandler.service';
-import { tap } from 'rxjs';
+import { UtilitiesService } from '@sharedModule/service/utilitiesSevice.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { catchError, finalize, of, tap } from 'rxjs';
+// import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -17,32 +22,26 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public readonly errorHandlerService: ErrorHandlerService,
-    private auth: AuthService
+    private authService: AuthService,
+    private utilitiesService: UtilitiesService,
+    private spinner: NgxSpinnerService
   ) {  }
 
   ngOnInit(): void {
     this.buildFormLogin();
-    this.auth.getAllUsers().pipe(
-      tap( (data) => {
-        console.log("Usuarios...", data);
-      }),
-      // catchError(() => {
-      //   // console.error("error...", error);
-        
-      // })
-    ).subscribe();
   }
 
   buildFormLogin(): void {
     this.formLogin = this.formBuilder.group({
-      correo: new FormControl<string>('', [
+      emailUser: new FormControl<string>('', [
         Validators.required, 
         Validators.minLength(5), 
         Validators.maxLength(120),
-        Validators.email
+        Validators.email,
+        emailValidator
       ]
       ),
-      contrasenia: new FormControl('', [
+      password: new FormControl('', [
         Validators.required,
         // Validators.pattern(StrongPasswordRegx)
       ])
@@ -54,6 +53,27 @@ export class LoginComponent implements OnInit {
       this.formLogin.markAllAsTouched();
       return;
     }
+    const { emailUser, password } = this.formLogin.value;
+    const objetUser: ILoginUser = {
+      emailUser,
+      password
+    }
+    this.spinner.show(); // Show Spinner
+    this.authService.loginUser(objetUser).pipe(
+      tap((data) => {
+        if (data.error) {
+          this.utilitiesService.showErrorMessage(data.message, '', 'Aceptar')
+        } else {
+          this.utilitiesService.showSucessMessage(data.message, 'inicio-sesion', 'Aceptar')
+        }
+      }),
+      catchError((err) => {
+        console.error("Error: ", err);
+        this.utilitiesService.showErrorMessage(err.message)
+        return of(null)
+      }),
+      finalize(() => this.spinner.hide() ) // Hiden Spinner
+    ).subscribe();
   }
   
   // public cancelAction() {

@@ -10,8 +10,8 @@
           <div class="form-field mt-2 mb-2">
             <mat-form-field fxFlex="100" fxFlex.lt-sm="100" appearance="outline">
               <mat-label>Correo electrónico :</mat-label>
-              <input matInput type="text" formControlName="correo" />
-              <mat-error *ngFor="let errorMessage of errorHandlerService.getErrorMessages(formLogin, 'correo')">
+              <input matInput type="text" formControlName="emailUser" />
+              <mat-error *ngFor="let errorMessage of errorHandlerService.getErrorMessages(formLogin, 'emailUser')">
                 {{ errorMessage }}
               </mat-error>
             </mat-form-field>
@@ -19,11 +19,11 @@
           <div class="form-field mt-2 mb-2">
             <mat-form-field fxFlex="100" fxFlex.lt-sm="100" appearance="outline">
               <mat-label>Contraseña :</mat-label>
-              <input matInput type="password" formControlName="contrasenia" [type]="hide ? 'password' : 'text'"/>
+              <input matInput type="password" formControlName="password" [type]="hide ? 'password' : 'text'"/>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
               </button>
-              <mat-error *ngFor="let errorMessage of errorHandlerService.getErrorMessages(formLogin, 'contrasenia')">
+              <mat-error *ngFor="let errorMessage of errorHandlerService.getErrorMessages(formLogin, 'password')">
                 {{ errorMessage }}
               </mat-error>
             </mat-form-field>

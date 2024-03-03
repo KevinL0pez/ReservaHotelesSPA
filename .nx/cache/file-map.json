@@ -125,8 +125,8 @@
         "hash": "5181392029701327869"
       },
       {
-        "file": "proxy.config.json",
-        "hash": "12619968280703611861"
+        "file": "proxy.conf.js",
+        "hash": "11572174844091714680"
       },
       {
         "file": "src/app/app-routing.module.ts",
@@ -154,7 +154,7 @@
       },
       {
         "file": "src/app/app.routing.ts",
-        "hash": "12181959511042973288"
+        "hash": "10541288558382226933"
       },
       {
         "file": "src/app/common/directives/directives.module.ts",
@@ -262,7 +262,7 @@
       },
       {
         "file": "src/app/modules/login/login.component.html",
-        "hash": "15053807887887763033"
+        "hash": "17128611582496529001"
       },
       {
         "file": "src/app/modules/login/login.component.scss",
@@ -274,23 +274,23 @@
       },
       {
         "file": "src/app/modules/login/login.component.ts",
-        "hash": "9994444787249295041"
+        "hash": "14807379439882376661"
       },
       {
         "file": "src/app/modules/login/login.module.ts",
-        "hash": "9331311256086327880"
+        "hash": "6970982028814479756"
       },
       {
         "file": "src/app/modules/login/login.routes.ts",
         "hash": "1670077303585425805"
       },
       {
-        "file": "src/app/modules/register/register.component.css",
-        "hash": "3244421341483603138"
+        "file": "src/app/modules/register/register.component.html",
+        "hash": "10595743454630975218"
       },
       {
-        "file": "src/app/modules/register/register.component.html",
-        "hash": "2489894839149508814"
+        "file": "src/app/modules/register/register.component.scss",
+        "hash": "7606715052468367851"
       },
       {
         "file": "src/app/modules/register/register.component.spec.ts",
@@ -298,11 +298,15 @@
       },
       {
         "file": "src/app/modules/register/register.component.ts",
-        "hash": "7412164209478860042"
+        "hash": "7014831916212742334"
       },
       {
         "file": "src/app/modules/register/register.module.ts",
-        "hash": "4627540437313218703"
+        "hash": "7334828907430507561"
+      },
+      {
+        "file": "src/app/modules/register/register.routes.ts",
+        "hash": "3859659076386434710"
       },
       {
         "file": "src/app/shared/models/ISafeAny.ts",
@@ -330,7 +334,7 @@
       },
       {
         "file": "src/app/shared/service/errorHandler.service.ts",
-        "hash": "3287217373522181583"
+        "hash": "1251437413754661485"
       },
       {
         "file": "src/app/shared/service/subject.service.ts",
